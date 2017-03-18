@@ -1,21 +1,11 @@
-import sys
-import BaseHTTPServer
-from SimpleHTTPServer import SimpleHTTPRequestHandler
+import SimpleHTTPServer
+import SocketServer
 
+PORT = 8000
 
-HandlerClass = SimpleHTTPRequestHandler
-ServerClass  = BaseHTTPServer.HTTPServer
-Protocol     = "HTTP/1.0"
+Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 
-if sys.argv[1:]:
-    port = int(sys.argv[1])
-else:
-    port = 80
-server_address = ('127.0.0.1', port)
+httpd = SocketServer.TCPServer(("", PORT), Handler)
 
-HandlerClass.protocol_version = Protocol
-httpd = ServerClass(server_address, HandlerClass)
-
-sa = httpd.socket.getsockname()
-print "Serving HTTP on", sa[0], "port", sa[1], "..."
+print "serving at port", PORT
 httpd.serve_forever()
