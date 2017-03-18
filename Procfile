@@ -1,1 +1,1 @@
-python: python code.py
+python: python code.py 80
