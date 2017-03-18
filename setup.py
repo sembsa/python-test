@@ -1,13 +1,11 @@
 import SimpleHTTPServer
 import SocketServer
 
-hostname = "localhost"
-port = 80
+PORT = 8000
 
 Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 
-httpd = SocketServer.TCPServer(("", port), Handler)
+httpd = SocketServer.TCPServer(("", PORT), Handler)
 
-print "Server starts: ", port
-
+print "serving at port", PORT
 httpd.serve_forever()
