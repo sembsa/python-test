@@ -1,1 +1,1 @@
-python: python code.py 80
+web: python app.py
