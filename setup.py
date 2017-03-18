@@ -6,7 +6,7 @@ port = 80
 
 Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 
-httpd = SocketServer.TCPServer((hostname, port), Handler)
+httpd = SocketServer.TCPServer(("", port), Handler)
 
 print "Server starts: ", port
 
